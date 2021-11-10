@@ -7,6 +7,15 @@
   padding:0;
 }
 
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  transform: scale(1.1);
+  transition: .5s;
+}
+
 html {
   height: 100%;
 }
@@ -82,15 +91,11 @@ nav > button {
   background-color: #FFB703;
   border-radius: 15%;
   font-size: 1vw;
-  cursor: pointer;
   color: #023047;
   font-size: larger;
 }
 
-button:hover {
-  transform: scale(1.1);
-  transition: .5s;
-}
+
 
 .new-trip-section {
   display: flex;
@@ -102,7 +107,7 @@ button:hover {
 .booking-box-section {
   border: 2px solid yellow;
   height: 100%;
-  width: 80%;
+  width: 90%;
   background-color: rgba(33, 158, 188, 0.4);
 }
 
@@ -120,9 +125,43 @@ button:hover {
   display: flex;
   border: 3px solid black;
   height: 30%;
+  // justify-content: center;
+
+
 }
 
 .booking-box-bottom > .selection {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   border: 1px solid green;
-  
+  color: #023047;
+  font-size: 3vh;
+}
+
+.book-btns {
+  display: flex;
+  border: 3px solid pink;
+  width: 25%;
+  height: 30%;
+  justify-content: center
+}
+
+.book-btns > button {
+  width: 7vw;
+  height: 5vh;
+  margin: 2%;
+  border-radius: 15%;
+  background-color: #FB8500;
+  font-size: 1vw;
+  color: #023047;
+}
+
+.estimate-cost {
+  border: 3px solid orange;
+  width: 50%;
+  height: 30%;
 }
