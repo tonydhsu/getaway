@@ -83,6 +83,7 @@ h1 {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  // position: fixed;
 }
 
 nav > button {
@@ -142,11 +143,16 @@ nav > button {
   font-size: 3vh;
 }
 
+.book-it-section {
+  display: flex;
+  height: 60%;
+}
+
 .book-btns {
   display: flex;
   border: 3px solid pink;
   width: 25%;
-  height: 30%;
+  height: 50%;
   justify-content: center
 }
 
@@ -162,6 +168,30 @@ nav > button {
 
 .estimate-cost {
   border: 3px solid orange;
+  display: flex;
+  align-items: center;
   width: 50%;
-  height: 30%;
+  height: 50%;
+  font-size: 3vh;
+  color: #023047;
+
+}
+
+.main-trips-section {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 1%;
+  margin: 1%;
+  
+  
+  border: 5px solid yellow;
+  height: 100vh;
+  margin-top: 2%;
+}
+
+.main-trips-section > article {
+  border: 3px solid green;
+  width: 85%;
+  height: 50vh;
 }
