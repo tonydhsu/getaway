@@ -31,7 +31,7 @@ header {
 }
 
 h1 {
-  font-size: 50px;
+  font-size: 4vw;
   color: #023047;
 }
 
@@ -69,11 +69,8 @@ h1 {
 
 .nav-btns {
   border: 3px solid red;
-  display: flex;
   height: 10%;
-}
-
-.nav-btns {
+  width: 85%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -83,7 +80,7 @@ nav > button {
   width: 10vw;
   height: 7vh;
   background-color: #FFB703;
-  border-radius: 10%;
+  border-radius: 15%;
   font-size: 1vw;
   cursor: pointer;
   color: #023047;
@@ -93,4 +90,39 @@ nav > button {
 button:hover {
   transform: scale(1.1);
   transition: .5s;
- }
+}
+
+.new-trip-section {
+  display: flex;
+  height: 25%;
+  border: 5px solid blue;
+  justify-content: center;
+}
+
+.booking-box-section {
+  border: 2px solid yellow;
+  height: 100%;
+  width: 80%;
+  background-color: rgba(33, 158, 188, 0.4);
+}
+
+.booking-box-top {
+  height: 30%;
+  border: 2px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4vw;
+  color: #023047;
+}
+
+.booking-box-bottom {
+  display: flex;
+  border: 3px solid black;
+  height: 30%;
+}
+
+.booking-box-bottom > .selection {
+  border: 1px solid green;
+  
+}
