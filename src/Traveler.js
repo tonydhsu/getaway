@@ -11,3 +11,5 @@ class Traveler {
     this.pendingTrips = [];
   }
 }
+
+export default Traveler;
