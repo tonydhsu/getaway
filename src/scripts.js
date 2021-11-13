@@ -1,4 +1,5 @@
 var dayjs = require('dayjs')
+// const isBetween = require('dayjs/plugin/isBetween')
 dayjs().format()
 
 import './css/base.scss';
@@ -9,5 +10,6 @@ import apiCalls from './apiCalls'
 
 console.log('This is the JavaScript entry file - your code begins here.');
 let now = dayjs()
-
+console.log(now, 'now')
+console.log(now.format('MM/DD/YYYY'), 'now')
 console.log(apiCalls.getAllTravelers, "script")

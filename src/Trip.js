@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 class Trip {
   constructor(tripsData) {
     this.id = tripsData.id;
@@ -12,5 +14,12 @@ class Trip {
     this.cost = 0;
     this.startDate;
     this.endDate;
+  }
+
+  getDates() {
+    let start = new Date(this.date);
+    let end = new Date(this.date).setDate(new Date(this.date).getDate() + this.duration);
+    this.startDate = dayjs(start).format('YYYY-MM-DD');
+    this.endDate = dayjs(end).format('YYYY-MM-DD');
   }
 }
