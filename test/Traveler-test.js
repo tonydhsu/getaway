@@ -1,5 +1,4 @@
-import chai from 'chai';
-const expect = chai.expect;
+const expect = require('chai').expect;
 
 import Traveler from '../src/Traveler';
 import travelersData from './sample-data/sample-travelers-data';
