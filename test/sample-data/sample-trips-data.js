@@ -18,7 +18,7 @@ const tripsData = [
     "date": "2021/10/04",
     "duration": 18,
     "status": "approved",
-    "suggestedActivities": []
+    "suggestedActivities": ['fishing', 'shopping']
   },
   {
     "id": 3,
