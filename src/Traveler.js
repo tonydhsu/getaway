@@ -1,8 +1,9 @@
-import * as dayjs from 'dayjs';
+import dayjs from 'dayjs';
 var isBetween = require('dayjs/plugin/isBetween')
 dayjs.extend(isBetween)
-import tripsData from '../test/sample-data/sample-trips-data.js';
+
 import Trip from './Trip.js'
+
 
 
 
@@ -50,7 +51,35 @@ class Traveler {
     })
   }
 
-  
+  getFutureTrips(todaysDate) {
+    return this.allTrips.filter((trip) => {
+      if (dayjs(todaysDate).isBefore(trip.startDate)) {
+        this.futureTrips.push(trip)
+      }
+    })
+  }
+
+  getPendingTrips() {
+    return this.allTrips.filter((trip) => {
+      if (trip.status === 'pending') {
+        this.pendingTrips.push(trip)
+      }
+    })
+  }
+
+  calculateAnnualSpending(year = new Date().year()) {
+    // let currentYear = dayjs(currentDate).getFullYear()
+    let totalCost = this.allTrips.reduce((total, trip) => {
+      if (dayjs(trip.startDate).year() === dayjs(year).year()) {
+        total += trip.getTotalCost()
+      }
+      return total
+      
+    }, 0)
+    return totalCost
+  }
+
+
 
 
 }

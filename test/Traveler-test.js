@@ -1,6 +1,7 @@
 const expect = require('chai').expect;
 
 import Traveler from '../src/Traveler';
+import destinationData from './sample-data/sample-destination-data';
 import travelersData from './sample-data/sample-travelers-data';
 import tripsData from './sample-data/sample-trips-data'
 
@@ -55,7 +56,7 @@ describe('Traveler', function() {
   it('should return number of all trips', function() {
     traveler1.getAllTrips(tripsData)
     traveler2.getAllTrips(tripsData)
-    expect(traveler1.allTrips.length).to.equal(5)
+    expect(traveler1.allTrips.length).to.equal(6)
     expect(traveler2.allTrips.length).to.equal(3)
   })
   
@@ -72,9 +73,26 @@ describe('Traveler', function() {
   it('should return number of current trips', function() {
     traveler1.getAllTrips(tripsData)
     traveler1.getCurrentTrips('2021-11-13')
-    traveler2.getAllTrips(tripsData)
-    console.log(traveler1.currentTrips)
-    
+   
     expect(traveler1.currentTrips.length).to.equal(1)
+  })
+
+  it('should return the number of future trips', function() {
+    traveler1.getAllTrips(tripsData)
+    traveler1.getFutureTrips('2021-11-13')
+    expect(traveler1.futureTrips.length).to.equal(2)
+  })
+
+  it('should return pending trips', function() {
+    traveler1.getAllTrips(tripsData)
+    traveler1.getPendingTrips()
+    expect(traveler1.pendingTrips.length).to.equal(1)
+  })
+  
+  it('should return total amount spent in a year', function() {
+    traveler1.getAllTrips(tripsData)
+    traveler1.calculateAnnualSpending('2021')
+    console.log(traveler1.annualCost, 'annualcost')
+    // console.log(traveler1.allTrips)
   })
 })

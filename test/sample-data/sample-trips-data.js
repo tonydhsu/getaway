@@ -82,12 +82,12 @@ const tripsData = [
   },
   {
     "id": 9,
-    "userID": 24,
+    "userID": 1,
     "destinationID": 19,
     "travelers": 5,
     "date": "2022/12/19",
     "duration": 19,
-    "status": "approved",
+    "status": "pending",
     "suggestedActivities": []
   },
   {
