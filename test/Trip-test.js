@@ -104,5 +104,10 @@ describe('Trip', function() {
     )
   })
 
-
+  it('should get the total cost of the trip', function() {
+    trip1.getDestination(destinationData)
+    trip1.getTotalCost()
+    // console.log(trip1.cost)
+    expect(trip1.cost).to.equal(1056.00)
+  })
 })
