@@ -1,12 +1,15 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
+var dayjs = require('dayjs')
+// const isBetween = require('dayjs/plugin/isBetween')
+dayjs().format()
 
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/beachbackground.png'
 import './images/logo.png'
 
+import apiCalls from './apiCalls'
 
 console.log('This is the JavaScript entry file - your code begins here.');
+let now = dayjs()
+console.log(now, 'now')
+console.log(now.format('MM/DD/YYYY'), 'now')
+console.log(apiCalls.getAllTravelers, "script")
