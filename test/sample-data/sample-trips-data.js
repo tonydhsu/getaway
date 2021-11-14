@@ -52,7 +52,7 @@ const tripsData = [
   },
   {
     "id": 6,
-    "userID": 1,
+    "userID": 2,
     "destinationID": 35,
     "travelers": 3,
     "date": "2022/06/29",
@@ -62,20 +62,20 @@ const tripsData = [
   },
   {
     "id": 7,
-    "userID": 37,
+    "userID": 1,
     "destinationID": 17,
     "travelers": 5,
-    "date": "2022/5/28",
+    "date": "2022/11/10",
     "duration": 20,
     "status": "approved",
     "suggestedActivities": []
   },
   {
     "id": 8,
-    "userID": 36,
+    "userID": 1,
     "destinationID": 39,
     "travelers": 6,
-    "date": "2022/02/07",
+    "date": "2021/11/13",
     "duration": 4,
     "status": "approved",
     "suggestedActivities": []
