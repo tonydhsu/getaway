@@ -31,7 +31,7 @@ const apiCalls = {
   },
 
   getSingleTraveler(userID) {
-    return fetch('http://localhost:3001/api/v1/travelers/${userID}')
+    return fetch(`http://localhost:3001/api/v1/travelers/${userID}`)
       .then(response =>
         response.json()
       )
