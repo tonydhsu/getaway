@@ -1,4 +1,4 @@
-import dayjs from 'dayjs';
+import * as dayjs from 'dayjs'
 
 class Trip {
   constructor(tripsData) {
@@ -10,7 +10,7 @@ class Trip {
     this.duration = tripsData.duration;
     this.status = tripsData.status;
     this.suggestedActivities = tripsData.suggestedActivities;
-    this.destination; 
+    this.destination;
     this.cost = 0;
     this.startDate;
     this.endDate;
@@ -24,27 +24,28 @@ class Trip {
   }
 
   convertDates() {
-    let start = new Date(this.date)
-    let end = new Date(this.date).setDate(new Date(this.date).getDate() + this.duration)
+    let start = new Date(this.date);
+    let end = new Date(this.date).setDate(new Date(this.date).getDate() + this.duration);
+
     this.startDate = dayjs(start).format('MMMM D, YYYY');
     this.endDate = dayjs(end).format('MMMM D, YYYY');
   }
 
-  getDestination(destinationData) {
-    return destinationData.find((destination) => {
-      if (destination.id === this.id) {
-        this.destination = destination
+  getDestinationInfo(destinationData) {
+    return destinationData.find(destination => {
+      if (this.destinationID === destination.id) {
+        return this.destination = destination;
       }
     })
   }
 
-  getTotalCost() {
+  estimateTotalTripCost() {
     let total = 0;
     total += this.destination.estimatedLodgingCostPerDay * this.duration
     total += this.destination.estimatedFlightCostPerPerson * this.travelers
     total += total * .10
-    return this.cost = parseFloat(total.toFixed(2))
+    return this.cost += parseFloat(total.toFixed(2));
   }
 }
 
-export default Trip
+export default Trip;
