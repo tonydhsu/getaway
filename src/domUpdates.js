@@ -5,11 +5,11 @@ var isBetween = require('dayjs/plugin/isBetween')
 let domUpdates = {
 
   changePageView(date) {
-    // const loginPage = document.getElementById('loginPage');
-    // const mainPage = document.getElementById('mainPage');
+    const loginPage = document.getElementById('loginPage');
+    const mainPage = document.getElementById('mainPage');
     const currentDate = document.getElementById('currentDate');
-    // loginPage.classList.add('hidden');
-    // mainPage.classList.remove('hidden');
+    loginPage.classList.add('hidden');
+    mainPage.classList.remove('hidden');
     currentDate.innerHTML = `${date}`;
   },
 
@@ -104,14 +104,11 @@ let domUpdates = {
 
   showLoginErrorMessage(type) {
     const loginError = document.getElementById('loginError');
-    loginError.classList.remove('hidden');
     if (type === 'password') {
-      loginError.innerText = `Incorrect password`
+      loginError.innerText = `**Incorrect password**`
     } else if (type === 'username') {
-      loginError.innerText = `Incorrect username`
-    } else if (type === 'both') {
-      loginError.innerText = `Incorrect username or password`
-    }
+      loginError.innerText = `**Incorrect username**`
+    } 
   }
 
   

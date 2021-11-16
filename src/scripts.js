@@ -59,7 +59,6 @@ function retrieveAllData() {
     .then(data => {
       allTrips = data[1];
       allDestinations = data[2];
-      retrieveSingleTraveler(44)
     })
 }
 
@@ -79,34 +78,22 @@ function checkLogin(event) {
   const usernameValue = usernameInput.value
   const passwordValue = passwordInput.value
   const splitName = usernameValue.split('')
+  const letters = splitName.slice(0, 8).join('')
   const numbers = splitName.slice(8, 10).join('')
   const userIDInput = parseInt(numbers)
 
-  let usernameResult = checkUsernameInput(numbers);
   let passwordResult = checkPasswordInput(passwordValue);
 
   event.preventDefault();
-  if (usernameResult === false && passwordResult === false) {
-    domUpdates.showErrorMessage('both')
-  } else if (usernameResult === false && passwordResult === true) {
-    domUpdates.showErrorMessage('username')
-  } else if (usernameResult === true && passwordResult === false) {
-    domUpdates.showErrorMessage('password')
-  } else if (usernameResult === true && passwordResult === true) {
+  if (letters !== 'traveler' || numbers > 50 && passwordResult === true) {
+    domUpdates.showLoginErrorMessage('username')
+  } else if (letters === 'traveler' && passwordResult === false) {
+    domUpdates.showLoginErrorMessage('password')
+  } else if (letters === 'traveler' && passwordResult === true) {
     retrieveSingleTraveler(userIDInput)
   }
 }
 
-function checkUsernameInput(numbers) {
-  if ((numbers === undefined) ||
-    (numbers === '0') ||
-    (numbers === '00') ||
-    (parseInt(numbers) > 50)) {
-    return false
-  } else {
-    return true
-  }
-}
 
 function checkPasswordInput(passwordValue) {
   if (passwordValue !== 'travel') {
