@@ -5,76 +5,76 @@ import Trip from '../src/Trip';
 import destinationData from './test-data/destination-data';
 import tripsData from './test-data/trips-data';
 
-describe('Trip', () => {
+describe('Trip', function() {
   let trip1;
   let trip3;
 
-  beforeEach(() => {
+  beforeEach(function() {
     trip1 = new Trip(tripsData[0])
     trip3 = new Trip(tripsData[2])
   });
 
-  it('should be a function', () => {
+  it('should be a function', function() {
     expect(Trip).to.be.a('function')
   })
 
-  it('should be an instance of Trip', () => {
+  it('should be an instance of Trip', function() {
     expect(trip1).to.be.an.instanceof(Trip)
   })
 
-  it('should have an id', () => {
+  it('should have an id', function() {
     expect(trip1.id).to.equal(1)
     expect(trip3.id).to.equal(3)
   })
 
-  it('should have a user id', () => {
+  it('should have a user id', function() {
     expect(trip1.userID).to.equal(1)
     expect(trip3.userID).to.equal(3)
   })
 
-  it('should have a destination id', () => {
+  it('should have a destination id', function() {
     expect(trip1.destinationID).to.equal(1)
     expect(trip3.destinationID).to.equal(3)
   })
 
-  it('should have a number of total travelers', () => {
+  it('should have a number of total travelers', function() {
     expect(trip1.travelers).to.equal(5)
     expect(trip3.travelers).to.equal(2)
   })
 
-  it('should have a date', () => {
+  it('should have a date', function() {
     expect(trip1.date).to.equal('2020/10/04')
     expect(trip3.date).to.equal('2020/08/24')
   })
 
-  it('should have a trip status', () => {
+  it('should have a trip status', function() {
     expect(trip1.status).to.equal('pending')
     expect(trip3.status).to.equal('approved')
   })
 
-  it('should have a trip duration', () => {
+  it('should have a trip duration', function() {
     expect(trip1.duration).to.equal(18)
     expect(trip3.duration).to.equal(11)
   })
 
-  it('should have an array of suggested activities', () => {
+  it('should have an array of suggested activities', function() {
     expect(trip1.suggestedActivities).to.deep.equal([])
     expect(trip3.suggestedActivities).to.deep.equal(['Shopping', 'Hiking'])
   })
 
-  it('should start off as undefined', () => {
+  it('should start off as undefined', function() {
     expect(trip1.destination).to.equal(undefined)
     expect(trip1.startDate).to.equal(undefined)
     expect(trip1.endDate).to.equal(undefined)
   })
 
 
-  it('should start off with 0 cost', () => {
+  it('should start off with 0 cost', function() {
     expect(trip1.cost).to.equal(0)
   })
 
 
-  it('should be able to retrieve destination', () => {
+  it('should be able to retrieve destination', function() {
     trip1.getDestinationInfo(destinationData)
     expect(trip1.destination).to.deep.equal(
       {
@@ -98,7 +98,7 @@ describe('Trip', () => {
 
   })
 
-  it('should be able to retrieve start and end date of the trip in YYYY-MM-DD format', () => {
+  it('should be able to retrieve start and end date of the trip in YYYY-MM-DD format', function() {
     trip1.getDates();
     trip3.getDates();
     expect(trip1.startDate).to.equal('2020-10-04')
@@ -107,7 +107,7 @@ describe('Trip', () => {
     expect(trip3.endDate).to.equal('2020-09-04')
   })
 
-  it('should be able to format dates into MMMM D, YYYY format', () => {
+  it('should be able to format dates into MMMM D, YYYY format', function() {
     trip1.convertDates();
     trip3.convertDates();
     expect(trip1.startDate).to.equal('Oct 4, 2020')
@@ -116,14 +116,12 @@ describe('Trip', () => {
     expect(trip3.endDate).to.equal('Sep 4, 2020')
   })
 
-  it('should be able to calculate the total amount of the trip', () => {
+  it('should be able to calculate the total amount of the trip', function() {
     trip1.getDestinationInfo(destinationData)
     trip3.getDestinationInfo(destinationData)
     trip1.estimateTotalTripCost();
     trip3.estimateTotalTripCost();
-    console.log(trip1.cost)
     expect(trip1.cost).to.equal(3586);
     expect(trip3.cost).to.equal(3663);
   })
-
 })

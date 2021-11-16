@@ -1,7 +1,6 @@
 import dayjs from "dayjs";
 var isBetween = require('dayjs/plugin/isBetween')
 
-
 let domUpdates = {
 
   changePageView(date) {
@@ -21,9 +20,7 @@ let domUpdates = {
 
   makeDestinationSelections(allDestinations) {
     let destinationInput = document.getElementById("destinationMenu");
-
     allDestinations.sort((a, b) => a.destination.localeCompare(b.destination))
-
     allDestinations.forEach(destination => {
       destinationInput.innerHTML += `<option value="${destination.id}">${destination.destination}</option>`;
     })
@@ -66,19 +63,19 @@ let domUpdates = {
             <h2 id="destination">${trip.destination.destination}</h2>
               <div class="trip-info">
                 <h3>Start Date:</h3>
-                <h2 id="startDate">${trip.startDate}</h2>
+                <h2>${trip.startDate}</h2>
               </div>
               <div class="trip-info">
                 <h3>Duration:</h3>
-                <h2 id="duration">${trip.duration} days</h2>
+                <h2>${trip.duration} days</h2>
               </div>
               <div class="trip-info">
                 <h3>Travelers:</h3>
-                <h2 id="travelers">${trip.travelers}</h2>
+                <h2>${trip.travelers}</h2>
               </div>
               <div class="trip-info">
                 <h3>Trip Status:</h3>
-                <h2 id="tripStatus">${trip.status}</h2>
+                <h2">${trip.status}</h2>
               </div>
             </section>
           </article>`;
@@ -110,8 +107,6 @@ let domUpdates = {
       loginError.innerText = `**Incorrect username**`
     } 
   }
-
-  
 }
 
 export default domUpdates

@@ -1,25 +1,21 @@
-//Imports
+// ** Imports **
 import dayjs from "dayjs";
 var isBetween = require('dayjs/plugin/isBetween')
-
-
 import './css/base.scss';
 import './images/beachbackground.png'
 import './images/logo.png'
-
 import domUpdates from './domUpdates'
 import apiCalls from './apiCalls'
 import Traveler from './Traveler'
 import Trip from './Trip'
 
-//Global
+// ** Global Variables **
 let currentDate = dayjs().format('dddd, MMM D YYYY')
 let currentTraveler;
 let allDestinations;
 let allTrips;
 
-
-//Query Selectors
+// ** Query Selectors **
 const usernameInput = document.getElementById('usernameInput');
 const passwordInput = document.getElementById('passwordInput');
 const loginBtn = document.getElementById('loginBtn')
@@ -29,7 +25,8 @@ const currentTripsBtn = document.getElementById('currentTripsBtn')
 const upcomingTripsBtn = document.getElementById('upcomingTripsBtn')
 const previousTripsBtn = document.getElementById('previousTripsBtn')
 const pendingTripsBtn = document.getElementById('pendingTripsBtn')
-//Booking Section
+
+// ** Booking Section **
 const destinationInput = document.getElementById('destinationMenu')
 const startDateInput = document.getElementById('startDateMenu')
 const durationInput = document.getElementById('durationInput')
@@ -38,8 +35,7 @@ const costBtn = document.getElementById('costBtn')
 const bookBtn = document.getElementById('bookBtn')
 const bookingForm = document.getElementById('bookingForm')
 
-
-//Event Listeners
+// ** Event Listeners **
 window.addEventListener('load', retrieveAllData);
 loginBtn.addEventListener('click', checkLogin)
 currentTripsBtn.addEventListener('click', showCurrentTripsPage)
@@ -49,9 +45,6 @@ pendingTripsBtn.addEventListener('click', showPendingTripsPage)
 allTripsBtn.addEventListener('click', showAllTrips)
 costBtn.addEventListener('click', estimateTripCost)
 bookBtn.addEventListener('click', bookNewTrip)
-
-
-
 
 
 function retrieveAllData() {
@@ -66,13 +59,10 @@ function retrieveSingleTraveler(userID) {
   apiCalls.getSingleTravelerData(userID)
     .then(data => {
       currentTraveler = new Traveler(data[0])
-      console.log(currentTraveler)
-
       createTraveler(currentTraveler);
       displayUserInfo(currentTraveler);
     })
 }
-
 
 function checkLogin(event) {
   const usernameValue = usernameInput.value
@@ -81,7 +71,6 @@ function checkLogin(event) {
   const letters = splitName.slice(0, 8).join('')
   const numbers = splitName.slice(8, 10).join('')
   const userIDInput = parseInt(numbers)
-
   let passwordResult = checkPasswordInput(passwordValue);
 
   event.preventDefault();
@@ -93,7 +82,6 @@ function checkLogin(event) {
     retrieveSingleTraveler(userIDInput)
   }
 }
-
 
 function checkPasswordInput(passwordValue) {
   if (passwordValue !== 'travel') {
@@ -109,13 +97,14 @@ function createTraveler() {
   currentTraveler.getUpcomingTrips(currentDate)
   currentTraveler.getPastTrips(currentDate)
   currentTraveler.getPendingTrips()
+
 }
 
 function displayUserInfo(traveler) {
   domUpdates.changePageView(currentDate);
   domUpdates.welcomeUserName(traveler);
   domUpdates.makeDestinationSelections(allDestinations);
-  domUpdates.displayAnnualCosts(traveler.calcAnnualSpending(currentDate, allDestinations));
+  domUpdates.displayAnnualCosts(traveler.calculateAnnualCost(currentDate, allDestinations));
   domUpdates.displayTrips(currentTraveler.allTrips, cardGrid, "My Trips", allDestinations)
 }
 
@@ -139,7 +128,7 @@ function showAllTrips() {
   domUpdates.displayTrips(currentTraveler.allTrips, cardGrid, "My Trips", allDestinations)
 }
 
-//Post new trip
+// ** Post new trip **
 
 function checkTripInputs(newTripData) {
   if (newTripData.destinationID <= 0 || newTripData.date === '' || !newTripData.duration || !newTripData.travelers || dayjs(newTripData.date).isBefore(currentDate)) {
@@ -175,8 +164,8 @@ function estimateTripCost() {
   } else {
     newTripInstance.getDestinationInfo(allDestinations)
     newTripInstance.estimateTotalTripCost()
-    let costString = newTripInstance.cost.toFixed(2)
-    domUpdates.showCostMessage(costString)
+    let bookCost = newTripInstance.cost.toFixed(2)
+    domUpdates.showCostMessage(bookCost)
   }
 }
 
