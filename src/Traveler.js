@@ -1,5 +1,5 @@
 import Trip from '../src/Trip';
-import * as dayjs from 'dayjs'
+import dayjs from 'dayjs'
 var isBetween = require('dayjs/plugin/isBetween')
 dayjs.extend(isBetween)
 
