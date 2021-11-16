@@ -27,6 +27,9 @@ Tired?  Stressed?  Burnt out?  Feel the need to just `getaway`?  This app allows
 -  DayJS
 
 ## Illustrations
+![getaway-gif-SM](https://user-images.githubusercontent.com/70819338/142078209-83ae020d-e729-4cd0-aabc-82a4480a885a.gif)  
+![getaway-gif2-SM](https://user-images.githubusercontent.com/70819338/142078233-9ba0249a-81dc-4ec2-a6bf-90f2e0a5dbbb.gif)
+
 
 ## Setup
 Setup API
