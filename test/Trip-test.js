@@ -110,10 +110,10 @@ describe('Trip', () => {
   it('should be able to format dates into MMMM D, YYYY format', () => {
     trip1.convertDates();
     trip3.convertDates();
-    expect(trip1.startDate).to.equal('October 4, 2020')
-    expect(trip1.endDate).to.equal('October 22, 2020')
-    expect(trip3.startDate).to.equal('August 24, 2020')
-    expect(trip3.endDate).to.equal('September 4, 2020')
+    expect(trip1.startDate).to.equal('Oct 4, 2020')
+    expect(trip1.endDate).to.equal('Oct 22, 2020')
+    expect(trip3.startDate).to.equal('Aug 24, 2020')
+    expect(trip3.endDate).to.equal('Sep 4, 2020')
   })
 
   it('should be able to calculate the total amount of the trip', () => {

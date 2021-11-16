@@ -27,8 +27,8 @@ class Trip {
     let start = new Date(this.date);
     let end = new Date(this.date).setDate(new Date(this.date).getDate() + this.duration);
 
-    this.startDate = dayjs(start).format('MMMM D, YYYY');
-    this.endDate = dayjs(end).format('MMMM D, YYYY');
+    this.startDate = dayjs(start).format('MMM D, YYYY');
+    this.endDate = dayjs(end).format('MMM D, YYYY');
   }
 
   getDestinationInfo(destinationData) {
