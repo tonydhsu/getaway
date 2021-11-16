@@ -221,13 +221,25 @@ nav > button {
 }
 
 .login-page {
-  height: 70%;
-  border: 2px solid blue;
+  height: 60%;
   display: flex;
   justify-content: center;
   align-items: center;
+  // border: 5px solid black;
 
 
+}
+
+.login-error {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-size: 3vh;
+
+
+
+  height: 7vh;
+  width: 30vw;
 }
 
 .login-container {
@@ -237,16 +249,14 @@ nav > button {
   align-items: center;
   justify-content: center;
 
-  border: 4px solid green;
   height: 90%;
   width: 60%;
 }
 
 .logo-container {
-  height: 80%;
-  width: 50%;
+  height: 80vh;
+  width: 40%;
   display: flex;
-  border: 3px solid yellow;
   justify-content: center;
   align-items: flex-end;
   // margin-bottom: 1%;
@@ -255,8 +265,8 @@ nav > button {
 }
 
 .logo-login {
-  width: 70%;
-  height: 70%;
+  width: 80%;
+  height: 80%;
   margin-bottom: 1%;
 }
 

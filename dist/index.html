@@ -10,7 +10,7 @@
   <title>getaway</title>
 </head>
 <body style="background-image: url(/images/beachbackground.png);">
-  <section class="login-page hidden" id="loginPage">
+  <section class="login-page" id="loginPage">
     <div class="login-container">
       <div class="logo-container">
         <img class="logo-login" src="/images/logo.png" alt="getaway logo with sun">
@@ -21,11 +21,15 @@
         <label for="password">Password</label>
         <input type="text" name="password" id="passwordInput" class="login-input" placeholder="password">
         <button type="submit" class="login-btn" id="loginBtn">Login</button>
-        <h3 class="login-error hidden" id="loginError"></h3>
       </form>
+      <section class="login-error-section">
+        <div class="login-error" id="loginError">
+
+        </div>
+      </section>
     </div>
   </section>
-  <section class="main-page" id="mainPage">
+  <section class="main-page hidden" id="mainPage">
     <header>
       <section class="left-header" id="leftHeader">
         <h1>Welcome,</h1>
