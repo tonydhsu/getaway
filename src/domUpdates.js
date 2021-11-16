@@ -10,7 +10,7 @@ let domUpdates = {
     const currentDate = document.getElementById('currentDate');
     // loginPage.classList.add('hidden');
     // mainPage.classList.remove('hidden');
-    currentDate.innerHTML += `${date}`;
+    currentDate.innerHTML = `${date}`;
   },
 
   welcomeUserName(user) {
@@ -99,7 +99,7 @@ let domUpdates = {
 
   showErrorMessage() {
     const bookingMessage = document.getElementById('bookingMsg');
-    bookingMessage.innerHTML = `Please provide all information`
+    bookingMessage.innerHTML = `**Please fill out all fields**`
   },
 
   showLoginErrorMessage(type) {
