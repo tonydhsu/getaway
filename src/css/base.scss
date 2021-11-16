@@ -1,5 +1,5 @@
-/* This is an example of how to import a partial scss file*/
 @import '_variables';
+@import '_mixins';
 
 * {
   font-family: 'ABeeZee', sans-serif;
@@ -10,7 +10,6 @@
 button {
   cursor: pointer;
   border-radius: 20%;
-
 }
 
 button:hover {
@@ -22,7 +21,6 @@ html {
   height: 100%;
 }
 
-
 body {
   height: 100%;
   max-width: 100%;
@@ -33,17 +31,16 @@ body {
 }
 
 header {
-  height: 30%;
   display: flex;
-  border-bottom: 5px solid #FB8500;
-  // justify-content: space-between;
-  // align-items: center;
-
+  height: 30%;
+  border-bottom: 5px solid $yellow;
 }
+
+// ** HEADER ** 
 
 h1 {
   font-size: 4vw;
-  color: #023047;
+  color: $dk-blue;
 }
 
 .total-spent-display {
@@ -56,24 +53,22 @@ h1 {
 
 .total-spent-display {
   margin-top: 1em;
-  color: #023047;
+  color: $dk-blue;
 }
 
 .left-header {
-  // border: 4px solid yellow;
-  display: flex;
+  @include flex-justify-center();
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   height: 100%;
   width: 50%;
 }
 
 .right-header {
+  display: flex;
+  justify-content: flex-end;
   height: 100%;
   width: 50%;
-  display: flex;
-  justify-content: flex-end
 }
 
 .logo {
@@ -82,65 +77,74 @@ h1 {
   margin-right: 10%;
 }
 
-.nav-btns {
-  height: 10%;
+// ** NAVIGATION SECTION **
+
+.nav-section {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  border-bottom: 5px solid #FB8500;
+  @media screen and (max-width: 1150px) {
+    height: 30vh;
+  }
+  @media screen and (max-width: 750px) {
+    height: 25vh;
+  }
+  height: 10%;
+  border-bottom: 5px solid $yellow;
   margin-top: 1%;
 }
 
 nav > button {
   width: 10vw;
   height: 7vh;
-  background-color: #FFB703;
+  background-color: $orange;
   font-size: 1vw;
-  color: #023047;
+  color: $dk-blue;
   font-size: larger;
   margin-bottom: 1%;
 }
 
-
+// ** BOOKING SECTION **
 
 .new-trip-section {
-  display: flex;
+  @include flex-justify-center();
+  @media screen and (max-width: 1150px) {
+    height: 30vh;
+  }
+  @media screen and (max-width: 750px) {
+    height: 25vh;
+  }
   height: 25%;
-  justify-content: center;
   margin-top: 1%;
 }
 
 .booking-box-section {
+  background-color: rgba(33, 158, 188, 0.4);
   height: 100%;
   width: 90%;
-  background-color: rgba(33, 158, 188, 0.4);
 }
 
 .booking-box-top {
-  height: 30%;
-  display: flex;
-  justify-content: center;
+  @include flex-justify-center();
   align-items: center;
+  height: 30%;
   font-size: 3vw;
-  color: #023047;
+  color: $dk-blue;
 }
 
 .booking-box-bottom {
   display: flex;
   height: 30%;
-  // justify-content: center;
-
-
+  margin-left: 2%;
 }
 
 .booking-box-bottom > .selection {
-  width: 100%;
-  height: 100%;
-  display: flex;
+  @include flex-justify-center();
   flex-direction: row;
   align-items: center;
-  justify-content: center;
-  color: #023047;
+  width: 100%;
+  height: 100%;
+  color: $dk-blue;
   font-size: 3vh;
 }
 
@@ -150,19 +154,18 @@ nav > button {
 }
 
 .book-btns {
-  display: flex;
+  @include flex-justify-center();
   width: 25%;
   height: 50%;
-  justify-content: center
 }
 
 .book-btns > button {
   width: 7vw;
   height: 5vh;
   margin: 2%;
-  background-color: #FB8500;
+  background-color: $orange;
   font-size: 1vw;
-  color: #023047;
+  color: $dk-blue;
 }
 
 .booking-msg {
@@ -171,8 +174,14 @@ nav > button {
   width: 50%;
   height: 50%;
   font-size: 3vh;
-  color: #023047;
+  color: $dk-blue;
+}
 
+// ** MAIN CARDS SECTION **
+
+.main-banner {
+  @include flex-justify-center();
+  color: $dk-blue;
 }
 
 .card-grid{
@@ -180,16 +189,12 @@ nav > button {
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 1%;
   grid-template-columns: repeat(auto-fill, minmax(355px, auto));
-  // justify-content: space-evenly;
   margin: 1%;
-  // border: 3px solid blue;
   height: 100%;
   margin-top: 2%;
-  // background-color: rgb(142, 202, 230, 0.6);
 }
 
 .card-top {
-  border: 3px solid pink;
   background-size: cover;
   height: 50%;
 }
@@ -197,15 +202,13 @@ nav > button {
 .card-bottom {
   display: flex;
   flex-direction: column;
-
 }
 
 .card {
-  border: 3px solid #FB8500;
+  border: 3px solid $orange;
   height: 60vh;
   width: auto;
   background-color: rgb(142, 202, 230, 0.8);
-
 }
 
 .trip-info {
@@ -220,48 +223,36 @@ nav > button {
   height: 50vh;
 }
 
+// ** LOGIN SECTION **
+
 .login-page {
-  height: 60%;
-  display: flex;
-  justify-content: center;
+  @include flex-justify-center();
   align-items: center;
-  // border: 5px solid black;
-
-
+  height: 60%;
 }
 
 .login-error {
-  display: flex;
-  justify-content: center;
+  @include flex-justify-center();
   align-items: flex-start;
   font-size: 3vh;
-
-
-
   height: 7vh;
   width: 30vw;
 }
 
 .login-container {
-  margin-top: 2%;
-  display: flex;
+  @include flex-justify-center();
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-
+  margin-top: 2%;
   height: 90%;
   width: 60%;
 }
 
 .logo-container {
+  @include flex-justify-center();
   height: 80vh;
   width: 40%;
-  display: flex;
-  justify-content: center;
   align-items: flex-end;
-  // margin-bottom: 1%;
-
-
 }
 
 .logo-login {
@@ -272,21 +263,17 @@ nav > button {
 
 .login-page {
   font-size: 4vh;
-  color: #023047;
+  color: $dk-blue;
+}
 
+.login-btn {
+  background-color: $orange;
+  color: $dk-blue;
+  width: 4vw;
+  height: 4vh;
+  font-size: 2vh;
 }
 
 .hidden {
   display: none !important;
-}
-
-.login-btn {
-  background-color: #FB8500;
-  color: #023047;
-  width: 4vw;
-  height: 4vh;
-  font-size: 2vh;
-  
-
-
 }
