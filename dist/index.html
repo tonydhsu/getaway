@@ -10,76 +10,99 @@
   <title>getaway</title>
 </head>
 <body style="background-image: url(/images/beachbackground.png);">
-  <header>
-    <section class="left-header" id="leftHeader">
-      <h1>Welcome,</h1>
-      <h1 class="user-display" id="userDisplay">user
-      </h1>
-      <p class="total-spent-display" id="totalSpentDisplay">total spent
-      </p>
-    </section>
-    <section class="right-header" id="rightHeader">
-      <img class="logo" src="/images/logo.png" alt="">
-    </section>
-  </header>
-  <nav class="nav-btns">
-    <button id="allTripsBtn">All Trips</button>
-    <button id="currentTripsBtn">Current Trips</button>
-    <button id="upcomingTripsBtn">Upcoming Trips</button>
-    <button id="previousTripsBtn">Previous Trips</button>
-    <button id="pendingTripsBtn">Pending Trips</button>
-  </nav>
-  <section class="new-trip-section" id="newTripSection">
-    <section class="booking-box-section">
-      <div class="booking-box-top">
-        Book Your Next Trip!
+  <section class="login-page hidden" id="loginPage">
+    <div class="login-container">
+      <div class="logo-container">
+        <img class="logo-login" src="/images/logo.png" alt="getaway logo with sun">
       </div>
-      <form class="booking-box-bottom">
-        <div class="selection">
-          <label for="destinationMenu">Destination:
-            <select required name="destination-menu" id="destinationMenu">
-              <option value="0">Select Destination</option>
-            </select>
-          </label>
-        </div>
-        <div class="selection">
-          <label for="startDateMenu">Departure Date:
-            <input type="date" required name="start-date-menu" id="startDateMenu" min="2019-01-01" max="2040-12-31">
-          </label>
-        </div>
-        <div class="selection">
-          <label for="durationInput">Nights:
-            <input required name="duration-input" id="durationInput" type="number" min="1" step="1" placeholder="number of nights">
-          </label>
-        </div>
-        <div class="selection">
-          <label for="travelersInput">Travelers:
-            <input type="number" required name="travelers-input" id="travelersInput" min="1" step="1" placeholder="number of travelers">
-          </label>
-        </div>
+      <form class="login-page" id="loginPage">
+        <label for="username">Username</label>
+        <input type="text" name="username" id="usernameInput" class="login-input" placeholder="username">
+        <label for="password">Password</label>
+        <input type="text" name="password" id="passwordInput" class="login-input" placeholder="password">
+        <button type="submit" class="login-btn" id="loginBtn">Login</button>
+        <h3 class="login-error hidden" id="loginError"></h3>
       </form>
-      <section class="book-it-section">
-        <section class="book-btns">
-          <button>Estimate Cost</button>
-          <button>Book It!</button>
-        </section>
-        <section class="estimate-cost" id="estimateCost">
-          1 Million dollars
+    </div>
+  </section>
+  <section class="main-page" id="mainPage">
+    <header>
+      <section class="left-header" id="leftHeader">
+        <h1>Welcome,</h1>
+        <h1 class="username-display" id="usernameDisplay">
+        </h1>
+        <p class="total-spent-display" id="totalSpentDisplay">total spent
+        </p>
+        <p class="current-date" id="currentDate">
+
+        </p>
+      </section>
+      <section class="right-header" id="rightHeader">
+        <img class="logo" src="/images/logo.png" alt="getaway logo with sun">
+      </section>
+    </header>
+    <nav class="nav-btns">
+      <button id="allTripsBtn">All Trips</button>
+      <button id="currentTripsBtn">Current Trips</button>
+      <button id="upcomingTripsBtn">Upcoming Trips</button>
+      <button id="previousTripsBtn">Previous Trips</button>
+      <button id="pendingTripsBtn">Pending Trips</button>
+    </nav>
+    <section class="new-trip-section" id="newTripSection">
+      <section class="booking-box-section">
+        <div class="booking-box-top">
+          Book Your Next Trip!
+        </div>
+        <form class="booking-box-bottom" id="bookingForm">
+          <div class="selection">
+            <label for="destinationMenu">Destination:
+              <select required name="destination-menu" id="destinationMenu">
+                <option value="0">Select Destination</option>
+              </select>
+            </label>
+          </div>
+          <div class="selection">
+            <label for="startDateMenu">Departure Date:
+              <input type="date" required name="start-date-menu" id="startDateMenu" min="2019-01-01" max="2040-12-31">
+            </label>
+          </div>
+          <div class="selection">
+            <label for="durationInput">Nights:
+              <input required name="duration-input" id="durationInput" type="number" min="1" step="1" placeholder="number of nights">
+            </label>
+          </div>
+          <div class="selection">
+            <label for="travelersInput">Travelers:
+              <input type="number" required name="travelers-input" id="travelersInput" min="1" step="1" placeholder="number of travelers">
+            </label>
+          </div>
+        </form>
+        <section class="book-it-section">
+          <section class="book-btns">
+            <button id="costBtn">Estimate Cost</button>
+            <button id="bookBtn">Book It!</button>
+          </section>
+          <section class="booking-msg" id="bookingMsg">
+          </section>
+
         </section>
       </section>
     </section>
-  </section>
-  <section class="main-trips-section" id=" mainTripsSection">
-    <article class="box box1"> Box1</article>
-    <article class="box box1"> Box2</article>
-    <article class="box box1"> Box3</article>
-    <article class="box box1"> Box4</article>
-    <article class="box box1"> Box5</article>
-    <article class="box box1"> Box6</article>
+    <main>
+      <section class="main-trips-section" id=" mainTripsSection">
+        <h2 class="main-banner" id="mainBanner"></h2>
+        <section class="card-grid" id="cardGrid">
 
+        </section>
+       
 
-
-
+    </main>
+  
+  
+  
+  
+  
+    </section>
 
   </section>
   

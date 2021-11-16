@@ -31,7 +31,7 @@ const apiCalls = {
   },
 
   getSingleTraveler(userID) {
-    return fetch('http://localhost:3001/api/v1/travelers/${userID}')
+    return fetch(`http://localhost:3001/api/v1/travelers/${userID}`)
       .then(response =>
         response.json()
       )
@@ -49,6 +49,24 @@ const apiCalls = {
   getSingleTravelerData(userID) {
     return Promise.all([this.getSingleTraveler(userID)])
       .then(data => data)
+      .catch(err => console.log(err))
+  },
+
+  postNewTrip(tripData) {
+    return fetch('http://localhost:3001/api/v1/trips', {
+      method: 'POST',
+      body: JSON.stringify(tripData),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+        if (!response.ok) {
+          throw new Error('Sorry we could not process your request')
+        }
+        return response.json()
+      })
+      .then(this.getAllData())
       .catch(err => console.log(err))
   }
 }

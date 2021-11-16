@@ -1,24 +1,19 @@
-import dayjs from 'dayjs';
+import Trip from '../src/Trip';
+import * as dayjs from 'dayjs'
 var isBetween = require('dayjs/plugin/isBetween')
 dayjs.extend(isBetween)
 
-import Trip from './Trip.js'
-
-
-
-
-
 class Traveler {
   constructor(traveler) {
-    this.id = traveler.id;
-    this.name = traveler.name;
+    this.id = traveler.id
+    this.name = traveler.name
     this.type = traveler.travelerType;
-    this.annualCost = 0;
     this.allTrips = [];
-    this.pastTrips = [];
-    this.currentTrips = [];
-    this.futureTrips = [];
-    this.pendingTrips = [];
+    this.annualCost = 0;
+    this.past = [];
+    this.present = [];
+    this.upcoming = [];
+    this.pending = [];
   }
 
   returnFirstName() {
@@ -26,62 +21,62 @@ class Traveler {
   }
 
   getAllTrips(allTrips) {
-    allTrips.forEach((trip) => {
+    allTrips.forEach(trip => {
       if (trip.userID === this.id) {
-        this.allTrips.push(new Trip(trip))
+        this.allTrips.push(new Trip(trip));
       }
     });
-    this.allTrips.forEach(trip => trip.getDates())
-  
+    this.allTrips.forEach(trip => trip.getDates());
   }
 
-  getPastTrips(todaysDate) {
-    return this.allTrips.filter((trip) => {
-      if (dayjs(trip.endDate).isBefore(todaysDate)) {
-        this.pastTrips.push(trip)
+  getCurrentTrips(currentDate) {
+    return this.allTrips.filter(trip => {
+      if (dayjs(currentDate).isBetween(trip.startDate, trip.endDate) || currentDate === trip.startDate) {
+        return this.present.push(trip);
+      }
+    });
+  }
+
+  getUpcomingTrips(currentDate) {
+    return this.allTrips.filter(trip => {
+      if (dayjs(currentDate).isBefore(trip.startDate) === true) {
+        return this.upcoming.push(trip)
       }
     })
   }
 
-  getCurrentTrips(todaysDate) {
-    return this.allTrips.filter((trip) => {
-      if (dayjs(todaysDate).isBetween(trip.startDate, trip.endDate) || todaysDate === trip.startDate) {
-        this.currentTrips.push(trip)
-      }
-    })
-  }
-
-  getFutureTrips(todaysDate) {
-    return this.allTrips.filter((trip) => {
-      if (dayjs(todaysDate).isBefore(trip.startDate)) {
-        this.futureTrips.push(trip)
+  getPastTrips(currentDate) {
+    return this.allTrips.filter(trip => {
+      if (dayjs(trip.startDate).isBefore(currentDate) === true && dayjs(trip.endDate).isBefore(currentDate)) {
+        return this.past.push(trip)
       }
     })
   }
 
   getPendingTrips() {
-    return this.allTrips.filter((trip) => {
+    return this.allTrips.filter(trip => {
       if (trip.status === 'pending') {
-        this.pendingTrips.push(trip)
+        return this.pending.push(trip)
       }
     })
   }
 
-  calculateAnnualSpending(year = new Date().year()) {
-    // let currentYear = dayjs(currentDate).getFullYear()
-    let totalCost = this.allTrips.reduce((total, trip) => {
-      if (dayjs(trip.startDate).year() === dayjs(year).year()) {
-        total += trip.getTotalCost()
+  calcAnnualSpending(currentDate, data) {
+    let currentYear = dayjs(currentDate).year();
+    let tripArr = this.allTrips.filter(trip => {
+      trip.getDestinationInfo(data);
+      let tripYear = dayjs(trip.startDate).year();
+      if (tripYear === currentYear && trip.status === 'approved') {
+        return trip
       }
-      return total
-      
-    }, 0)
-    return totalCost
+    })
+
+    return tripArr.reduce((total, trip) => {
+      trip.estimateTotalTripCost();
+      total += trip.cost;
+      return this.annualCost = total;
+    }, 0);
   }
-
-
-
-
 }
 
 export default Traveler;
