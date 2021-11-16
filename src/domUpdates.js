@@ -110,8 +110,6 @@ let domUpdates = {
       loginError.innerText = `**Incorrect username**`
     } 
   }
-
-  
 }
 
 export default domUpdates

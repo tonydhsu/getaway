@@ -61,9 +61,9 @@ class Traveler {
     })
   }
 
-  calcAnnualSpending(currentDate, data) {
+  calculateAnnualCost(currentDate, data) {
     let currentYear = dayjs(currentDate).year();
-    let tripArr = this.allTrips.filter(trip => {
+    let tripArray = this.allTrips.filter(trip => {
       trip.getDestinationInfo(data);
       let tripYear = dayjs(trip.startDate).year();
       if (tripYear === currentYear && trip.status === 'approved') {
@@ -71,7 +71,7 @@ class Traveler {
       }
     })
 
-    return tripArr.reduce((total, trip) => {
+    return tripArray.reduce((total, trip) => {
       trip.estimateTotalTripCost();
       total += trip.cost;
       return this.annualCost = total;

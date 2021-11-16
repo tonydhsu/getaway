@@ -115,7 +115,7 @@ function displayUserInfo(traveler) {
   domUpdates.changePageView(currentDate);
   domUpdates.welcomeUserName(traveler);
   domUpdates.makeDestinationSelections(allDestinations);
-  domUpdates.displayAnnualCosts(traveler.calcAnnualSpending(currentDate, allDestinations));
+  domUpdates.displayAnnualCosts(traveler.calculateAnnualCost(currentDate, allDestinations));
   domUpdates.displayTrips(currentTraveler.allTrips, cardGrid, "My Trips", allDestinations)
 }
 
