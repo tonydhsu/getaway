@@ -1,6 +1,7 @@
 const expect = require('chai').expect;
 
 import Traveler from '../src/Traveler';
+import destinationData from './sample-data/sample-destination-data';
 import travelersData from './sample-data/sample-travelers-data';
 import tripsData from './sample-data/sample-trips-data'
 
@@ -15,55 +16,83 @@ describe('Traveler', function() {
   it('should be a function', function() {
     expect(Traveler).to.be.a('function')
   })
-
+      
   it('should be an instance of Traveler', function() {
     expect(traveler1).to.be.an.instanceOf(Traveler)
   })
-
+  
   it('should have a id', function() {
     expect(traveler1.id).to.equal(1)
     expect(traveler2.id).to.equal(2)
   })
-
+  
   it('should have a name', function() {
     expect(traveler1.name).to.equal('Ham Leadbeater')
     expect(traveler2.name).to.equal('Rachael Vaughten')
   })
-
+  
   it('should have a type', function() {
     expect(traveler1.type).to.equal('relaxer')
     expect(traveler2.type).to.equal('thrill-seeker')
   })
-
+  
   it('should start with no data', function() {
     expect(traveler1.allTrips).to.deep.equal([])
     expect(traveler1.pastTrips).to.deep.equal([])
-    expect(traveler1.presentTrips).to.deep.equal([])
+    expect(traveler1.currentTrips).to.deep.equal([])
     expect(traveler1.futureTrips).to.deep.equal([])
     expect(traveler1.pendingTrips).to.deep.equal([])
   })
-
+  
   it('should start with 0 annual cost', function() {
     expect(traveler1.annualCost).to.equal(0)
   })
-
+  
   it('should return the first name', function() {
     expect(traveler1.returnFirstName()).to.equal('Ham')
     expect(traveler2.returnFirstName()).to.equal('Rachael')
   })
-
-  it.skip('should return number of all trips', function() {
+  
+  it('should return number of all trips', function() {
     traveler1.getAllTrips(tripsData)
     traveler2.getAllTrips(tripsData)
-    console.log(traveler1.allTrips)
-    expect(traveler1.allTrips.length).to.equal(4)
-    expect(traveler2.allTrips.length).to.equal(2)
+    expect(traveler1.allTrips.length).to.equal(6)
+    expect(traveler2.allTrips.length).to.equal(3)
   })
-
-  it.skip('should return number of past trips', function() {
+  
+  it('should return number of past trips', function() {
     traveler1.getAllTrips(tripsData)
     traveler1.getPastTrips('2021-11-13')
-    console.log(traveler1.pastTrips)
+    traveler2.getAllTrips(tripsData)
+    traveler2.getPastTrips('2021-11-13')
+
+    expect(traveler1.pastTrips.length).to.equal(3)
+    expect(traveler2.pastTrips.length).to.equal(2)
+  })
+  
+  it('should return number of current trips', function() {
+    traveler1.getAllTrips(tripsData)
+    traveler1.getCurrentTrips('2021-11-13')
+   
+    expect(traveler1.currentTrips.length).to.equal(1)
   })
 
+  it('should return the number of future trips', function() {
+    traveler1.getAllTrips(tripsData)
+    traveler1.getFutureTrips('2021-11-13')
+    expect(traveler1.futureTrips.length).to.equal(2)
+  })
+
+  it('should return pending trips', function() {
+    traveler1.getAllTrips(tripsData)
+    traveler1.getPendingTrips()
+    expect(traveler1.pendingTrips.length).to.equal(1)
+  })
+  
+  it('should return total amount spent in a year', function() {
+    traveler1.getAllTrips(tripsData)
+    traveler1.calculateAnnualSpending('2021')
+    console.log(traveler1.annualCost, 'annualcost')
+    // console.log(traveler1.allTrips)
+  })
 })
